@@ -1,0 +1,68 @@
+{
+  "ignore": [
+    "node_modules"
+  ],
+  "env": {
+    "development": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "browsers": [
+                "> 1%",
+                "last 2 versions",
+                "not ie <= 8"
+              ]
+            }
+          }
+        ],
+        [
+          "@babel/preset-react",
+          {
+            "development": true
+          }
+        ]
+      ],
+      "plugins": [
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        ["@babel/plugin-proposal-class-properties", { "loose": true }],
+        "@babel/plugin-proposal-object-rest-spread",
+        ["babel-plugin-styled-components", { "displayName": true,  "minify": false }],
+      ],
+    },
+    "production": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "browsers": [
+                "> 1%",
+                "last 2 versions",
+                "not ie <= 8"
+              ]
+            }
+          }
+        ],
+        "@babel/preset-react"
+      ],
+      "plugins": [
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        ["@babel/plugin-proposal-class-properties", { "loose": true }],
+        "@babel/plugin-proposal-object-rest-spread",
+        ["babel-plugin-styled-components", { "displayName": false,  "minify": true }],
+      ],
+    },
+    "test": {
+      "plugins": [
+        [
+          "__coverage__",
+          {
+            "ignore": "*.+(test|stub).*"
+          }
+        ]
+      ]
+    }
+  }
+}
