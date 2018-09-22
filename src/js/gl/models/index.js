@@ -25,22 +25,10 @@ class MODEL extends BaseModel {
     AppEmitter.on(M_INPUT_NEW, obj => {
       const { type, index, files } = obj
       switch (type) {
-        case MEDIA_TYPES.webcam: {
-          return this.addSourceEl(qs(`#${LOCAL_VIDEO_ID}`), index)
-        }
-        case MEDIA_TYPES.canvas: {
-          const v = this.streams.createCanvasStreamEl(qs(`#${CANVAS_OUTPUT_ID}`))
-          return this.addSourceEl(v, index)
-        }
-        case MEDIA_TYPES.file: {
-          return this.addSourceEl(createVideoElFromFile(files[0]), index)
-          //return this.addSourceEl(qs(`#${LOCAL_VIDEO_ID}`), index)
-        }
-        case MEDIA_TYPES.remove: {
-          return this.removeSourceElAt(index)
+        case MEDIA_TYPES.VIDEO_EL: {
+          return this.addSourceEl(qs(`#${LOCAL_VIDEO_ID}${index}`), index)
         }
       }
-      // this.addSourceEl(createVideoElFromFile(obj.file[0]))
     })
   }
 

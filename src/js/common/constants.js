@@ -1,37 +1,38 @@
-import QS from "query-string"
-import { cover, contain } from "intrinsic-scale"
-import Detector from "common/detector"
-import { map } from "lodash"
+import QS from 'query-string'
+import { cover, contain } from 'intrinsic-scale'
+import Detector from 'common/detector'
+import { map } from 'lodash'
 
 let _msgTo
 export const postErrMsg = str => {}
 export const postMsg = str => {}
-
-export const videoSettings = {
-  width: { max: WIDTH },
-  height: { max: HEIGHT },
-  frameRate: { max: FPS },
-}
-const parseQs = QS.parse(window.location.search)
-export const USE_AUDIO = !!parseQs.audio
-export const COLOR_P = process.env.NODE_ENV === "production"
-export const IS_PROD = process.env.NODE_ENV === "production"
-export const IS_STAGE = process.env.NODE_ENV === "stage"
-export const IS_DEV = process.env.NODE_ENV === "development"
-
-export const SERVER_URL = IS_DEV
-  //? "https://rad.ngrok.io/"
-  ? "https://localhost:4455/"
-  : "https://rad.wtf/"
 
 export const IS_MOBILE = !Detector.isDesktop
 export const IS_DESKTOP = Detector.isDesktop
 export const WIDTH = 640
 export const HEIGHT = 480
 
-export const CANVAS_OUTPUT_ID = "c_output"
-export const LOCAL_VIDEO_ID = "localVideo"
-export const REMOTE_VIDEOS_EL_ID = "remoteVideo"
+export const videoSettings = {
+  width: WIDTH,
+  height: HEIGHT,
+  frameRate: { max: FPS },
+}
+const parseQs = QS.parse(window.location.search)
+export const USE_AUDIO = !!parseQs.audio
+export const COLOR_P = process.env.NODE_ENV === 'production'
+export const IS_PROD = process.env.NODE_ENV === 'production'
+export const IS_STAGE = process.env.NODE_ENV === 'stage'
+export const IS_DEV = process.env.NODE_ENV === 'development'
+
+export const SERVER_URL = IS_DEV
+  ? //? "https://rad.ngrok.io/"
+    'https://localhost:4455/'
+  : 'https://rad.wtf/'
+
+
+export const CANVAS_OUTPUT_ID = 'c_output'
+export const LOCAL_VIDEO_ID = 'localVideo'
+export const REMOTE_VIDEOS_EL_ID = 'remoteVideo'
 
 export const MAX_RECORD_TIME = 5000
 export const FPS = QS.parse(location.search).fps || 12
@@ -41,16 +42,16 @@ export const RECORD_FRAMES_DELAY = 1500
 export const FUDGE_VIDEO_DELAY = 3000
 
 export const ALPHA_SENS = 50
-export const AUDIO_EXP = ".webm"
-export const AUDIO_EXP_TYPE = "webm"
+export const AUDIO_EXP = '.webm'
+export const AUDIO_EXP_TYPE = 'webm'
 
 export const KEY_W = 8
 export const KEY_H = 8
 
-export const M_SCREEN_ORIEN = "local:mobile:screenOrientation"
-export const M_SCREEN_SIZE = "local:mobile:screenSize"
-export const M_DEVICE_MOTION = "local:mobile:deviceMotion"
-export const M_DEVICE_ORIEN = "local:mobile:deviceOrientation"
+export const M_SCREEN_ORIEN = 'local:mobile:screenOrientation'
+export const M_SCREEN_SIZE = 'local:mobile:screenSize'
+export const M_DEVICE_MOTION = 'local:mobile:deviceMotion'
+export const M_DEVICE_ORIEN = 'local:mobile:deviceOrientation'
 
 export const hasPeer = (values, peer) => {
   let _found = false
@@ -83,7 +84,7 @@ export const resizeCanvas = (el, w = WIDTH, h = HEIGHT) => {
     window.innerWidth,
     window.innerHeight,
     w,
-    h
+    h,
   )
   const scale = Math.max(width / w, height / h)
   el.style.transform = `scale3d(${scale},${scale},1) translate3d(0, 0, 0)`
@@ -93,43 +94,43 @@ export const resizeCanvas = (el, w = WIDTH, h = HEIGHT) => {
 }
 
 const RED = [
-  "background: #f45f42",
-  "border: 1px solid #662558",
-  "color: #3d3735",
-  "display: block",
-  "line-height: 30px",
-  "text-align: center",
-  "font-weight: bold",
-].join(";")
+  'background: #f45f42',
+  'border: 1px solid #662558',
+  'color: #3d3735',
+  'display: block',
+  'line-height: 30px',
+  'text-align: center',
+  'font-weight: bold',
+].join(';')
 const GREEN = [
-  "background: #662558",
-  "border: 1px solid #662558",
-  "color: #42f4aa",
-  "display: block",
-  "line-height: 30px",
-  "text-align: center",
-  "font-weight: bold",
-].join(";")
+  'background: #662558',
+  'border: 1px solid #662558',
+  'color: #42f4aa',
+  'display: block',
+  'line-height: 30px',
+  'text-align: center',
+  'font-weight: bold',
+].join(';')
 const BLOCK = [
-  "background: #571402",
-  "border: 1px solid #3E0E02",
-  "color: white",
-  "display: block",
-  "text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)",
-  "box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset",
-  "line-height: 30px",
-  "text-align: center",
-  "font-weight: bold",
-].join(";")
+  'background: #571402',
+  'border: 1px solid #3E0E02',
+  'color: white',
+  'display: block',
+  'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)',
+  'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset',
+  'line-height: 30px',
+  'text-align: center',
+  'font-weight: bold',
+].join(';')
 const BLOCK_INFO = [
-  "background: #4285f4",
-  "text-shadow: 0 1px 0 rgba(0, 0, 0, 0.7)",
-  "color: #fbbc05",
-  "display: block",
-  "line-height: 23px",
-  "text-align: center",
-  "font-weight: bold",
-].join(";")
+  'background: #4285f4',
+  'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.7)',
+  'color: #fbbc05',
+  'display: block',
+  'line-height: 23px',
+  'text-align: center',
+  'font-weight: bold',
+].join(';')
 
 export const logError = str => console.log(`%c ${str}`, RED)
 export const logSuccess = str => console.log(`%c ${str}`, GREEN)
@@ -137,13 +138,8 @@ export const logInfoB = str => console.log(`%c ${str}`, BLOCK)
 export const logInfo = str => console.log(`%c ${str}`, BLOCK_INFO)
 
 export const MEDIA_TYPES = {
-  webcam: "webcam",
-  canvas: "canvas",
-  instagram: "instagram",
-  media: "media",
-  file: "file",
-  remove: "remove",
+  VIDEO_EL: 'VIDEO_EL',
 }
 
 export const MAX_MEDIA_INPUTS = 3
-export const ALLOWED_TYPES = ["video/mp4"]
+export const ALLOWED_TYPES = ['video/mp4']

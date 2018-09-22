@@ -5,6 +5,7 @@ import { cover, contain } from 'intrinsic-scale'
 
 export const qs = (string, el = document) => el.querySelector(string)
 export const qsAll = (string, el = document) => el.querySelectorAll(string)
+export const isEnvTrue = str => (isBoolean(str) ? str : str == 'true')
 
 export const fillScreen = (el, options = { w: 640, h: 480, cover: true }) => {
   const { w, h } = options
@@ -56,7 +57,7 @@ export const destroyVideoEl = v => {
   v = null
 }
 
-export const isEnvTrue = key => {
+/*export const isEnvTrue = key => {
   return isBoolean(Boolean(process.env[key])) ? process.env[key] == 'true' : !isNil(process.env[key]);
 };
-
+*/

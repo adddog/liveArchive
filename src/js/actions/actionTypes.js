@@ -10,3 +10,8 @@ export const SOCKET_MSG_SEND = 'SOCKET_MSG_SEND';
 export const SOCKET_MSG_SEND_NO_REPLY = 'SOCKET_MSG_SEND_NO_REPLY';
 export const SOCKET_MSG_DELETE = 'SOCKET_MSG_DELETE';
 
+/* **************
+*
+************** */
+export const SET_VIDEO_INPUTS = 'SET_VIDEO_INPUTS';
+

@@ -6,14 +6,17 @@ import {
     onlyUpdateForPropTypes,
     withHandlers,
 } from "recompose"
+
 import { connect } from "react-redux"
 import { find, omit } from "lodash"
 import { withRouter } from "react-router-dom"
 import { isUndefined } from "lodash"
 import { debounce, autobind } from "core-decorators"
-import { Main } from "UI/UIComponents"
+import { Main , composeElement} from "UI/UIComponents"
 import VideoComponent from "VideoComponent/VideoComponent"
+import RenderComponent from "RenderComponent/RenderComponent"
 
+const ContainerEl = composeElement(["abs", "full", 'tl'], "div")
 
 class AppComponent extends Component {
   static propTypes = {
@@ -29,6 +32,7 @@ class AppComponent extends Component {
   render() {
     return (
       <Main>
+        <RenderComponent/>
         <VideoComponent/>
       </Main>
     )

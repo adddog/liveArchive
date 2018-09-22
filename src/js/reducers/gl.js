@@ -1,31 +1,21 @@
-import * as ACTIONS from "actions/actionTypes";
-import {MEDIA_TYPES,MAX_MEDIA_INPUTS} from "common/constants"
-import CONFIG from "common/config"
-import { Map } from "immutable";
+import * as ACTIONS from 'actions/actionTypes'
+import { MEDIA_TYPES, MAX_MEDIA_INPUTS } from 'common/constants'
+import CONFIG from 'common/config'
+import { Map, List, fromJS } from 'immutable'
 
 const initialState = new Map()
-/* ************
-*  config
-************ */
-  .set("settings", {
-    maxInputs: MAX_MEDIA_INPUTS,
-    numChannels: 3,
-    width: CONFIG.width,
-    height: CONFIG.height
-  })
-  .set("videoInputs", {
-    [MEDIA_TYPES.webcam]: {},
-    [MEDIA_TYPES.canvas]: {},
-    [MEDIA_TYPES.instagram]: {},
-    [MEDIA_TYPES.media]: {},
-    [MEDIA_TYPES.file]: {},
-    [MEDIA_TYPES.remove]: {},
-  })
+  /*************
+   *  config
+   ************ */
+  .set('videoInputs', new List())
 
-export default function webrtc(state = initialState, action) {
+export default function gl(state = initialState, action) {
   switch (action.type) {
+    case ACTIONS.SET_VIDEO_INPUTS: {
+      return state.set('videoInputs', fromJS(action.payload))
+    }
     default: {
-      return state;
+      return state
     }
   }
 }

@@ -8,6 +8,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = env => {
   const isDev = !!env.dev
@@ -143,7 +144,9 @@ module.exports = env => {
           quiet: true,
         }),
       ),
-      DefineENV,
+      new Dotenv({
+        path: isDev ? '.env.dev' : '.env.prod',
+      }),
     ]),
   }
 }

@@ -13,6 +13,8 @@ const Button = composeElement(["flex"], "button")
 export const InputForm = props => (
   <Div>
     <Input onChange={props.onChange} />
-    <Button>submit</Button>
+    <Button data-index={props.index} onClick={props.onSubmit}>
+      submit
+    </Button>
   </Div>
 )

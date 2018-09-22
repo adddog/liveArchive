@@ -28,10 +28,5 @@ export default combineReducers({
     }
   ),
   routes,
-  app,
-  keyboard,
-  settings,
-  socket,
-  webrtc,
   gl,
 })
